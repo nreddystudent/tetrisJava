@@ -23,10 +23,10 @@ public class JavafxApplication extends JFrame {
 		var ctx = new SpringApplicationBuilder(JavafxApplication.class)
 				.headless(false).run(args);
 
-		EventQueue.invokeLater(() -> {
-
-			var ex = ctx.getBean(JavafxApplication.class);
-			ex.setVisible(true);
-		});
+//		EventQueue.invokeLater(() -> {
+//
+//			var ex = ctx.getBean(JavafxApplication.class);
+//			ex.setVisible(true);
+//		});
 	}
 }

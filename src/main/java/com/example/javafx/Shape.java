@@ -15,8 +15,8 @@ public class Shape {
 	
 	private boolean collision = false, moveX = false;
 	
-	private int normalSpeed = 600, speedDown = 60, currentSpeed;
-	
+	private int speedDown = normalSpeed/5, currentSpeed;
+	private static int normalSpeed = 500;
 	
 	private long time, lastTime;
 	
@@ -41,6 +41,9 @@ public class Shape {
 		
 		if(collision)
 		{
+			if(normalSpeed != 0)
+				normalSpeed -= 20;
+			System.out.println(normalSpeed);
 			for(int row = 0; row < coords.length; row++)
 				for(int col = 0; col < coords[row].length; col++)
 					if(coords[row][col] != 0)
@@ -118,7 +121,7 @@ public class Shape {
 			if(count < board.getBoard()[0].length)
 				height --;
 			
-			
+
 		}
 		
 		
