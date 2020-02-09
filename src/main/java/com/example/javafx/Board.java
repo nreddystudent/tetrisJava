@@ -1,6 +1,6 @@
 package com.example.javafx;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -14,7 +14,8 @@ import javax.swing.Timer;
 
 public class Board extends JPanel implements KeyListener{
 	
-	private BufferedImage blocks;	
+	private BufferedImage blocks;
+	private boolean isPaused = false;
 	
 	private final int blockSize = 30;
 	
@@ -35,7 +36,7 @@ public class Board extends JPanel implements KeyListener{
 	private boolean gameOver = false;
 	
 	public Board(){
-		
+		setBackground(Color.black);
 		try {
 			blocks = ImageIO.read(Board.class.getResource("/tiles.png"));
 		} catch (IOException e) {
@@ -162,6 +163,15 @@ public class Board extends JPanel implements KeyListener{
 			currentShape.speedDown();
 		if(e.getKeyCode() == KeyEvent.VK_UP)
 			currentShape.rotate();
+		if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
+			isPaused = !isPaused;
+			if (isPaused == true) {
+				timer.stop();
+			}
+			else {
+				timer.start();
+			}
+		}
 	}
 
 	@Override

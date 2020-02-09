@@ -20,8 +20,7 @@ public class JavafxApplication extends JFrame {
 
 	public static void main(String[] args) {
 
-		var ctx = new SpringApplicationBuilder(JavafxApplication.class)
-				.headless(false).run(args);
+		var ctx = new SpringApplicationBuilder(JavafxApplication.class).run(args);
 
 //		EventQueue.invokeLater(() -> {
 //

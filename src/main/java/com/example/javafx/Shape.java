@@ -43,7 +43,6 @@ public class Shape {
 		{
 			if(normalSpeed != 0)
 				normalSpeed -= 20;
-			System.out.println(normalSpeed);
 			for(int row = 0; row < coords.length; row++)
 				for(int col = 0; col < coords[row].length; col++)
 					if(coords[row][col] != 0)
