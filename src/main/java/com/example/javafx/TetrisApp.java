@@ -6,16 +6,15 @@ import javax.swing.JFrame;
 
 
 @SpringBootApplication
-public class JavafxApplication extends JFrame {
+public class TetrisApp extends JFrame {
 
-	public JavafxApplication() {
+	public TetrisApp() {
 		new Window();
 	}
 
 	public static void main(String[] args) {
 
-		var ctx = new SpringApplicationBuilder(JavafxApplication.class).run(args);
-
+		var ctx = new SpringApplicationBuilder(TetrisApp.class).run(args);
 //		EventQueue.invokeLater(() -> {
 //
 //			var ex = ctx.getBean(JavafxApplication.class);

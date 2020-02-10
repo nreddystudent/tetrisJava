@@ -23,7 +23,7 @@ public class Board extends JPanel implements KeyListener{
 	
 	private int[][] board = new int[boardHeight][boardWidth];
 	
-	private Shape[] shapes = new Shape[7];
+	private Shape[] shapes = new Shape[10];
 	
 	private Shape currentShape;
 	
@@ -38,7 +38,7 @@ public class Board extends JPanel implements KeyListener{
 	public Board(){
 		setBackground(Color.black);
 		try {
-			blocks = ImageIO.read(Board.class.getResource("/tiles.png"));
+			blocks = ImageIO.read(Board.class.getResource("/tiles1.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -89,6 +89,20 @@ public class Board extends JPanel implements KeyListener{
 			{1, 1},
 			{1, 1}   // O-Shape
 		}, this, 7);
+		shapes[7] = new Shape(blocks.getSubimage(blockSize*7, 0, blockSize, blockSize), new int[][]{
+				{1, 0},
+				{1, 1}   // l-Shape
+		}, this, 8);
+		shapes[8] = new Shape(blocks.getSubimage(blockSize*8, 0, blockSize, blockSize), new int[][]{
+				{0, 1, 0},
+				{1, 1, 1},
+				{0, 1, 0}// X-Shape
+		}, this, 9);
+		shapes[9] = new Shape(blocks.getSubimage(blockSize*9, 0, blockSize, blockSize), new int[][]{
+				{0, 1 ,0 , 0},
+				{0, 1, 1, 0} ,
+				{0, 0, 1, 1}// W-Shape
+		}, this, 10);
 		
 		setNextShape();
 		
@@ -126,7 +140,6 @@ public class Board extends JPanel implements KeyListener{
 	public void setNextShape(){
 		
 		int index = (int)(Math.random()*shapes.length);
-		
 		Shape newShape = new Shape(shapes[index].getBlock(), shapes[index].getCoords(),
 				this, shapes[index].getColor());
 		
