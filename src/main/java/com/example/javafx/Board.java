@@ -177,12 +177,13 @@ public class Board extends JPanel implements KeyListener{
 		if(e.getKeyCode() == KeyEvent.VK_UP)
 			currentShape.rotate();
 		if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
-			isPaused = !isPaused;
-			if (isPaused == true) {
-				timer.stop();
-			}
-			else {
-				timer.start();
+			if (!gameOver) {
+				if (isPaused == false) {
+					timer.stop();
+				} else {
+					timer.start();
+				}
+				isPaused = !isPaused;
 			}
 		}
 	}
