@@ -11,7 +11,6 @@ public class TetrisApp extends JFrame {
 	public TetrisApp() {
 		new Window();
 	}
-
 	public static void main(String[] args) {
 
 		var ctx = new SpringApplicationBuilder(TetrisApp.class).run(args);

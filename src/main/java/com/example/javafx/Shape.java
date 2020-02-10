@@ -35,7 +35,7 @@ public class Shape {
 		
 	}
 	
-	public void update(){
+	public int update(int score){
 		time += System.currentTimeMillis() - lastTime;
 		lastTime = System.currentTimeMillis();
 		
@@ -48,14 +48,14 @@ public class Shape {
 					if(coords[row][col] != 0)
 						board.getBoard()[y + row][x + col] = color;
 			
-			checkLine();
-			board.setNextShape();
+			score = checkLine(score);
+			score = board.setNextShape(score);
 		}
-		
-		
+
+
 		if(!(x + deltaX + coords[0].length > 10) && !(x + deltaX < 0))
 		{
-			
+
 			for(int row = 0; row < coords.length; row++)
 				for(int col = 0; col < coords[row].length; col++)
 					if(coords[row][col] != 0)
@@ -65,12 +65,12 @@ public class Shape {
 					}
 			if(moveX)
 				x += deltaX;
-		}		
-			
-		
+		}
+
+
 		if(!(y + 1 + coords.length > 20))
 		{
-			
+
 			for(int row = 0; row < coords.length; row++)
 				for(int col = 0; col < coords[row].length; col++)
 					if(coords[row][col] != 0)
@@ -79,7 +79,7 @@ public class Shape {
 							collision = true;
 					}
 			if(time > currentSpeed)
-				
+
 			{
 				y++;
 				time = 0;
@@ -87,11 +87,12 @@ public class Shape {
 		}else{
 			collision = true;
 		}
-		
+
 		deltaX = 0;
 		moveX = true;
+		return (score);
 	}
-	
+
 	public void render(Graphics g){
 		
 		for(int row = 0; row < coords.length; row++)
@@ -103,7 +104,7 @@ public class Shape {
 		
 	}
 	
-	private void checkLine(){
+	private int checkLine(int score){
 		int height = board.getBoard().length - 1;
 		
 		for(int i = height; i > 0; i--){
@@ -119,11 +120,13 @@ public class Shape {
 			}
 			if(count < board.getBoard()[0].length)
 				height --;
+			else
+				score += 5;
 			
 
 		}
 		
-		
+		return score;
 	}
 	
 	

@@ -35,7 +35,7 @@ public class Board extends JPanel implements KeyListener{
 	
 	private boolean gameOver = false;
 
-	private int score = 0;
+	public int score = 0;
 
 	public Board(){
 		setBackground(Color.black);
@@ -106,12 +106,12 @@ public class Board extends JPanel implements KeyListener{
 				{0, 0, 1, 1}// W-Shape
 		}, this, 10);
 		
-		setNextShape();
+		this.score = setNextShape(score);
 		
 	}
 	
 	public void update(){
-		currentShape.update();
+		score = currentShape.update(score);
 		if(gameOver)
 			timer.stop();
 	}
@@ -129,26 +129,27 @@ public class Board extends JPanel implements KeyListener{
 					col*blockSize, row*blockSize, null);
 
 
-		g.setColor(Color.WHITE);
-		g.drawString("Score: " + Integer.toString(score), 400, 50);
-		
 		for(int i = 0; i < boardHeight; i++){
 			g.drawLine(0, i*blockSize, boardWidth*blockSize, i*blockSize);
 		}
 		for(int j = 0; j < boardWidth; j++){
 			g.drawLine(j*blockSize, 0, j*blockSize, boardHeight*blockSize);
 		}
-		
+		g.setColor(Color.WHITE);
+		g.drawString("Score: " + Integer.toString(score), 400, 50);
+
 	}
 	
-	public void setNextShape(){
+	public int setNextShape(int score){
 		
 		int index = (int)(Math.random()*shapes.length);
 		Shape newShape = new Shape(shapes[index].getBlock(), shapes[index].getCoords(),
 				this, shapes[index].getColor());
 		
 		currentShape = newShape;
+
 		score++;
+		System.out.println(score);
 		for(int row = 0; row < currentShape.getCoords().length; row++)
 			for(int col = 0; col < currentShape.getCoords()[row].length; col++)
 				if(currentShape.getCoords()[row][col] != 0){
@@ -157,7 +158,7 @@ public class Board extends JPanel implements KeyListener{
 						gameOver = true;
 				}
 		
-		
+		return score;
 		
 	}
 	
