@@ -24,7 +24,7 @@ public class Board extends JPanel implements KeyListener{
 	private int[][] board = new int[boardHeight][boardWidth];
 	
 	private Shape[] shapes = new Shape[10];
-	
+	private Shape[] nextShapes = new Shape[3];
 	private Shape currentShape;
 	
 	private Timer timer;
@@ -104,9 +104,18 @@ public class Board extends JPanel implements KeyListener{
 				{0, 1, 1, 0} ,
 				{0, 0, 1, 1}// W-Shape
 		}, this, 10);
-		
+
+		int index;
+		index = index = (int)(Math.random()*shapes.length);
+		nextShapes[0] = new Shape(shapes[index].getBlock(), shapes[index].getCoords(),
+				this, shapes[index].getColor());
+		index = index = (int)(Math.random()*shapes.length);
+		nextShapes[1] = new Shape(shapes[index].getBlock(), shapes[index].getCoords(),
+				this, shapes[index].getColor());
+		index = index = (int)(Math.random()*shapes.length);
+		nextShapes[2] = new Shape(shapes[index].getBlock(), shapes[index].getCoords(),
+				this, shapes[index].getColor());
 		this.score = setNextShape(score);
-		
 	}
 	
 	public void update(){
@@ -120,7 +129,7 @@ public class Board extends JPanel implements KeyListener{
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);	
 		
-		currentShape.render(g);
+		currentShape.render(g, 0, 0);
 		
 		for(int row = 0; row < board.length; row++)
 			for(int col = 0; col < board[row].length; col++)
@@ -138,6 +147,10 @@ public class Board extends JPanel implements KeyListener{
 		g.setColor(Color.WHITE);
 		g.drawString("Score: " + Integer.toString(score), 400, 50);
 
+		nextShapes[0].render(g, 300, 100);
+		nextShapes[1].render(g, 300, 225);
+		nextShapes[2].render(g, 300, 350);
+
 	}
 	
 	public int setNextShape(int score){
@@ -145,8 +158,11 @@ public class Board extends JPanel implements KeyListener{
 		int index = (int)(Math.random()*shapes.length);
 		Shape newShape = new Shape(shapes[index].getBlock(), shapes[index].getCoords(),
 				this, shapes[index].getColor());
-		
-		currentShape = newShape;
+
+		currentShape = nextShapes[0];
+		nextShapes[0] = nextShapes[1];
+		nextShapes[1] = nextShapes[2];
+		nextShapes[2] = newShape;
 
 		score++;
 		System.out.println(score);

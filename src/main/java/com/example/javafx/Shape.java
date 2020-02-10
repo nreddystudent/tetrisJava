@@ -89,15 +89,13 @@ public class Shape {
 		return (score);
 	}
 
-	public void render(Graphics g){
+	public void render(Graphics g, int offsetX, int offsetY){
 		
 		for(int row = 0; row < coords.length; row++)
 			for(int col = 0 ; col < coords[row].length; col++)
 				if(coords[row][col] != 0)
-					g.drawImage(block, col*board.getBlockSize() + x*board.getBlockSize(),
-							row*board.getBlockSize() + y*board.getBlockSize(), null);
-		
-		
+					g.drawImage(block, col*board.getBlockSize() + x*board.getBlockSize() + offsetX,
+							row*board.getBlockSize() + y*board.getBlockSize() + offsetY, null);
 	}
 	
 	private int checkLine(int score){
@@ -110,8 +108,6 @@ public class Shape {
 				
 				if(board.getBoard()[i][j] != 0)
 					count++;
-				else
-					continue;
 				board.getBoard()[height][j] = board.getBoard()[i][j];
 			}
 			if(count < board.getBoard()[0].length)
