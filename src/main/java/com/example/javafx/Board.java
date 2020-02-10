@@ -34,7 +34,9 @@ public class Board extends JPanel implements KeyListener{
 	private final int delay = 1000/FPS;
 	
 	private boolean gameOver = false;
-	
+
+	private int score = 0;
+
 	public Board(){
 		setBackground(Color.black);
 		try {
@@ -111,8 +113,10 @@ public class Board extends JPanel implements KeyListener{
 				if(board[row][col] != 0)
 					g.drawImage(blocks.getSubimage((board[row][col]-1)*blockSize, 0, blockSize, blockSize),
 					col*blockSize, row*blockSize, null);
-		
-		
+
+
+		g.setColor(Color.WHITE);
+		g.drawString("Score: " + Integer.toString(score), 400, 50);
 		
 		for(int i = 0; i < boardHeight; i++){
 			g.drawLine(0, i*blockSize, boardWidth*blockSize, i*blockSize);
@@ -131,7 +135,7 @@ public class Board extends JPanel implements KeyListener{
 				this, shapes[index].getColor());
 		
 		currentShape = newShape;
-		
+		score++;
 		for(int row = 0; row < currentShape.getCoords().length; row++)
 			for(int col = 0; col < currentShape.getCoords()[row].length; col++)
 				if(currentShape.getCoords()[row][col] != 0){
