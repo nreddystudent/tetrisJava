@@ -10,7 +10,7 @@ public class Shape {
 	private Board board;
 	private int deltaX = 0;
 	private int x, y;
-	private int minimumSpeed = 20;
+	private int minimumSpeed = 300;
 	private int color;
 	
 	private boolean collision = false, moveX = false;
@@ -41,7 +41,7 @@ public class Shape {
 		
 		if(collision)
 		{
-				if(normalSpeed == 20)
+				if(normalSpeed <= 300)
 					normalSpeed = minimumSpeed;
 				else
 					normalSpeed -= 20;
