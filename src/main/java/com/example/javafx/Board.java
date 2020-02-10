@@ -100,9 +100,9 @@ public class Board extends JPanel implements KeyListener{
 				{0, 1, 0}// X-Shape
 		}, this, 9);
 		shapes[9] = new Shape(blocks.getSubimage(blockSize*9, 0, blockSize, blockSize), new int[][]{
-				{0, 1 ,0 , 0},
-				{0, 1, 1, 0} ,
-				{0, 0, 1, 1}// W-Shape
+				{ 1 ,0 , 0},
+				{ 1, 1, 0} ,
+				{ 0, 1, 1}// W-Shape
 		}, this, 10);
 
 		int index;
@@ -169,7 +169,6 @@ public class Board extends JPanel implements KeyListener{
 		for(int row = 0; row < currentShape.getCoords().length; row++)
 			for(int col = 0; col < currentShape.getCoords()[row].length; col++)
 				if(currentShape.getCoords()[row][col] != 0){
-					
 					if(board[row][col + 3] != 0)
 						gameOver = true;
 				}

@@ -10,7 +10,7 @@ public class Shape {
 	private Board board;
 	private int deltaX = 0;
 	private int x, y;
-	
+	private int minimumSpeed = 20;
 	private int color;
 	
 	private boolean collision = false, moveX = false;
@@ -41,8 +41,10 @@ public class Shape {
 		
 		if(collision)
 		{
-			if(normalSpeed != 0)
-				normalSpeed -= 20;
+				if(normalSpeed == 20)
+					normalSpeed = minimumSpeed;
+				else
+					normalSpeed -= 20;
 			for(int row = 0; row < coords.length; row++)
 				for(int col = 0; col < coords[row].length; col++)
 					if(coords[row][col] != 0)
@@ -90,7 +92,6 @@ public class Shape {
 	}
 
 	public void render(Graphics g, int offsetX, int offsetY){
-		
 		for(int row = 0; row < coords.length; row++)
 			for(int col = 0 ; col < coords[row].length; col++)
 				if(coords[row][col] != 0)
