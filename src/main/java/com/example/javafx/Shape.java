@@ -52,10 +52,8 @@ public class Shape {
 			score = board.setNextShape(score);
 		}
 
-
 		if(!(x + deltaX + coords[0].length > 10) && !(x + deltaX < 0))
 		{
-
 			for(int row = 0; row < coords.length; row++)
 				for(int col = 0; col < coords[row].length; col++)
 					if(coords[row][col] != 0)
@@ -67,10 +65,8 @@ public class Shape {
 				x += deltaX;
 		}
 
-
 		if(!(y + 1 + coords.length > 20))
 		{
-
 			for(int row = 0; row < coords.length; row++)
 				for(int col = 0; col < coords[row].length; col++)
 					if(coords[row][col] != 0)
@@ -113,17 +109,15 @@ public class Shape {
 			for(int j = 0; j < board.getBoard()[0].length; j++){
 				
 				if(board.getBoard()[i][j] != 0)
-					count ++;
-				
+					count++;
+				else
+					continue;
 				board.getBoard()[height][j] = board.getBoard()[i][j];
-				
 			}
 			if(count < board.getBoard()[0].length)
 				height --;
 			else
 				score += 5;
-			
-
 		}
 		
 		return score;
@@ -151,12 +145,10 @@ public class Shape {
 				if(board.getBoard()[y + row][x + col] != 0){
 					return;
 				}
-				
 			}
 		}
 		
 		coords = rotatedMatrix;
-		
 	}
 	
 	private int[][] getTranspose(int[][] matrix){

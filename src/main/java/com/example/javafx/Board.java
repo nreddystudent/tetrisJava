@@ -46,7 +46,6 @@ public class Board extends JPanel implements KeyListener{
 		}
 		
 		timer = new Timer(delay, new ActionListener(){
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				update();
@@ -112,10 +111,11 @@ public class Board extends JPanel implements KeyListener{
 	
 	public void update(){
 		score = currentShape.update(score);
-		if(gameOver)
+		if(gameOver) {
+			System.exit(0);
 			timer.stop();
+		}
 	}
-	
 	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);	
