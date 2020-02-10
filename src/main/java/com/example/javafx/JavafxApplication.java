@@ -1,14 +1,8 @@
 package com.example.javafx;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-		import org.springframework.boot.builder.SpringApplicationBuilder;
-		import javax.swing.GroupLayout;
-		import javax.swing.JButton;
-		import javax.swing.JComponent;
-		import javax.swing.JFrame;
-		import java.awt.EventQueue;
-		import java.awt.event.ActionEvent;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import javax.swing.JFrame;
 
 
 @SpringBootApplication

@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 public class Window {
 	
-	public static final int WIDTH = 307, HEIGHT = 640;
+	public static final int WIDTH = 317, HEIGHT = 640;
 	private JFrame window;
 	private Board board;
 	
