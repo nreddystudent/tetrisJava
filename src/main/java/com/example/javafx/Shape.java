@@ -126,10 +126,9 @@ public class Shape {
 		if(collision)
 			return;
 		
-		int[][] rotatedMatrix = null;
+		int[][] rotatedMatrix;
 		
 		rotatedMatrix = getTranspose(coords);
-		
 		rotatedMatrix = getReverseMatrix(rotatedMatrix);
 		
 		if(x + rotatedMatrix[0].length > 10 || y + rotatedMatrix.length > 20)

@@ -106,13 +106,13 @@ public class Board extends JPanel implements KeyListener{
 		}, this, 10);
 
 		int index;
-		index = index = (int)(Math.random()*shapes.length);
+		index = (int)(Math.random()*shapes.length);
 		nextShapes[0] = new Shape(shapes[index].getBlock(), shapes[index].getCoords(),
 				this, shapes[index].getColor());
-		index = index = (int)(Math.random()*shapes.length);
+		index = (int)(Math.random()*shapes.length);
 		nextShapes[1] = new Shape(shapes[index].getBlock(), shapes[index].getCoords(),
 				this, shapes[index].getColor());
-		index = index = (int)(Math.random()*shapes.length);
+		index = (int)(Math.random()*shapes.length);
 		nextShapes[2] = new Shape(shapes[index].getBlock(), shapes[index].getCoords(),
 				this, shapes[index].getColor());
 		this.score = setNextShape(score);
@@ -121,7 +121,6 @@ public class Board extends JPanel implements KeyListener{
 	public void update(){
 		score = currentShape.update(score);
 		if(gameOver) {
-//			System.exit(0);
 			new Window();
 			timer.stop();
 		}
@@ -146,12 +145,11 @@ public class Board extends JPanel implements KeyListener{
 			g.drawLine(j*blockSize, 0, j*blockSize, boardHeight*blockSize);
 		}
 		g.setColor(Color.WHITE);
-		g.drawString("Score: " + Integer.toString(score), 400, 50);
+		g.drawString("Score: " + score, 400, 50);
 
 		nextShapes[0].render(g, 300, 100);
 		nextShapes[1].render(g, 300, 225);
 		nextShapes[2].render(g, 300, 350);
-
 	}
 	
 	public int setNextShape(int score){

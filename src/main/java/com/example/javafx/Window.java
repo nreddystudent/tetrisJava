@@ -23,8 +23,6 @@ public class Window {
 		window.setVisible(true);
 	}
 	
-	
-	
 	public static void main(String[] args) {
 		new Window();
 	}
