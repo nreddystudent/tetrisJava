@@ -121,7 +121,8 @@ public class Board extends JPanel implements KeyListener{
 	public void update(){
 		score = currentShape.update(score);
 		if(gameOver) {
-			System.exit(0);
+//			System.exit(0);
+			new Window();
 			timer.stop();
 		}
 	}
